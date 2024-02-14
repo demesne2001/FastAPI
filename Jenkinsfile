@@ -1,40 +1,45 @@
 
 pipeline {
     agent any
-
+   
+    
     stages {
         stage('checkout') {
             steps {
-               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'demesne2001', url: 'https://github.com/demesne2001/FastAPI.git']])
+               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'python207', url: 'https://github.com/demesne2001/FastAPI.git']])
                 echo 'checkout done'
             }
         }
-        stage('requirements install') {
+        
+        stage('Docker Image') {
             steps {
+                
                 script{
-                    
-                    bat'choco install python'
-                    bat 'pip install -r requirements.txt'
+                    def a=0
+                    bat 'docker build . -f dockerfile.txt -t  BackendProject'
+                    a=1
+                    if(a>0)
+                    {
+                         bat 'docker rm BackendProject'
+                    }
                 }
-                echo 'requirements install done'
+                echo 'Docker Image done'
             }
         }
-        stage('Project build') {
+        stage('Docker Run') {
             steps {
                 script{
-                    bat 'uvicorn index:app --host 127.0.0.1 --port 2023'
+                    bat 'docker run -p 3032:3032 -d --name BackendProject BackendProject'
                 }
-                echo 'Project startted'
+                echo 'Docker Running'
             }
         }
-        stage('Reload Server') {
+        stage('Docker push') {
             steps {
                 script{
-                    bat 'cd c:\\nginx-1.24.0'
-                    bat 'nginx -s reload'
-                    
+                    bat 'docker login -u patelom0910 -p 09102001Om'
                 }
-                echo 'Project startted'
+                echo 'Docker push done'
             }
         }
     }
