@@ -16,11 +16,11 @@ pipeline {
                 
                 script{
                     def a=0
-                    bat 'docker build . -f dockerfile.txt -t  BackendProject'
+                    bat 'docker build . -f dockerfile.txt -t  backendproject'
                     a=1
                     if(a>0)
                     {
-                         bat 'docker rm BackendProject'
+                         bat 'docker rm backendproject'
                     }
                 }
                 echo 'Docker Image done'
@@ -29,7 +29,7 @@ pipeline {
         stage('Docker Run') {
             steps {
                 script{
-                    bat 'docker run -p 3032:3032 -d --name BackendProject BackendProject'
+                    bat 'docker run -p 3032:3032 -d --name backendproject backendproject'
                 }
                 echo 'Docker Running'
             }
