@@ -12,7 +12,7 @@ pipeline {
         stage('requirements install') {
             steps {
                 script{
-                    bat 'pip3 install -r requirements.txt'
+                    bat 'pip install -r requirements.txt'
                 }
                 echo 'requirements install done'
             }
