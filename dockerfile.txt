@@ -10,7 +10,7 @@ RUN pip install --upgrade pip
 COPY . .
 RUN ls -l
 
-RUN pip install -r requirements
+RUN pip install -r requirements.txt
 
 EXPOSE 2024
 
