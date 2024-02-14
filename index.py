@@ -9,5 +9,5 @@ app.include_router(Department,prefix='/Department')
 def Demo():
     return{"msg":"Welcome to Fast"}
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="127.0.0.1", port=8000)
