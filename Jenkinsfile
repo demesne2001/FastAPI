@@ -12,6 +12,8 @@ pipeline {
         stage('requirements install') {
             steps {
                 script{
+                    
+                    bat'choco install python'
                     bat 'pip install -r requirements.txt'
                 }
                 echo 'requirements install done'
