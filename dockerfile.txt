@@ -13,7 +13,7 @@ COPY . /Backend
 
 
 RUN apt-get update
-RUN apt-get install -y \ curl apt-utils apt-transport-https debconf-utils gcc build-essential g++-5\ && rm -rf /var/lib/apt/lists/*
+RUN sudo apt-get install -y \ curl apt-utils apt-transport-https debconf-utils gcc build-essential g++-5\ && rm -rf /var/lib/apt/lists/*
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
 RUN apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql17 unixodbc-dev
