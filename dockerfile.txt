@@ -1,8 +1,8 @@
 FROM python:3.12
 
 
-RUN mkdir /Backend
-WORKDIR /Backend
+RUN mkdir /FastAPI
+WORKDIR /FastAPI
 
 
 ENV PYTHONDONTWRITEBYTECODE 1
