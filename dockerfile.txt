@@ -18,4 +18,4 @@ RUN ls -l
 
 EXPOSE 2024
 
-CMD uvicorn index:app --host 127.0.0.1 --port 2024
+CMD uvicorn index:app reload
