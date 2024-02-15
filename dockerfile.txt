@@ -11,7 +11,7 @@ ENV PYTHONUNBUFFERED 1
 
 
 RUN pip3 install fastapi uvicorn
-RUN sudo apt install unixodbc-dev
+RUN pip3 install pyodbc
 RUN pip3 install --upgrade pip  
 
 
