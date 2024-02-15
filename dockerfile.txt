@@ -7,11 +7,11 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1  
 
 
-RUN pip install fastapi uvicorn
-RUN pip install --upgrade pip  
+RUN pip3 install fastapi uvicorn
+RUN pip3 install --upgrade pip  
 
 COPY ./* .
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 RUN ls -l
 
 
