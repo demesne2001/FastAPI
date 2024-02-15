@@ -13,13 +13,19 @@ COPY . /Backend
 
 
 RUN apt-get update
-RUN apt-get install -y tdsodbc unixodbc-dev \ && apt install unixodbc-bin -y \ && apt-get clean -y
-RUN echo "[FreeTDS]\n\ Description = FreeTDS unixODBC Driver\n\ Driver = /usr/lib/arm-linux-gnueabi/odbc/libtdsodbc.so\n\ Setup = /usr/lib/arm-linux-gnueabi/odbc/libtdsS.so" >> /etc/odbcinst.ini
-
+RUN apt-get install -y \ curl apt-utils apt-transport-https debconf-utils gcc build-essential g++-5\ && rm -rf /var/lib/apt/lists/*
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql17 unixodbc-dev
+RUN apt-get update && ACCEPT_EULA=Y apt-get install -y mssql-tools
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+RUN /bin/bash -c "source ~/.bashrc"
+RUN apt-get update -y && \ apt-get install -y python3-pip python3-dev
+RUN apt-get update && apt-get install -y locales \ && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \ && locale-gen
 
 
 RUN pip3 install -r requirements.txt
-
+RUN pip3 install pyodbc SQLAlchemy
 
 RUN apt update
 RUN ls -l
