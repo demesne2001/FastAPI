@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from ..Service import mstDepartmentService
+from Service import mstDepartmentService
 from ..Entity.mstDepartmentEntity import mstDepartment
 Department=APIRouter()
 
