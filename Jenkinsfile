@@ -30,7 +30,7 @@ pipeline {
         stage('Docker Run') {
             steps {
                 script{
-                    bat 'docker run -p 2023:2023 -d --name backendproject backendproject'
+                    bat 'docker run -p 2023:8000 -d --name backendproject backendproject'
                 }
                 echo 'Docker Running'
             }

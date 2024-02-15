@@ -18,4 +18,4 @@ RUN ls -l
 
 EXPOSE 2023
 
-CMD uvicorn index:app --port 2023
+CMD uvicorn index:app --reload
