@@ -10,11 +10,23 @@ RUN pip3 install fastapi uvicorn
 RUN pip3 install --upgrade pip  
 
 COPY . /Backend
+run sudo apt-get install gcc
+
+RUN [FreeTDS]Description=FreeTDS Driver Driver=/usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so Setup=/usr/lib/x86_64-linux-gnu/odbc/libtdsS.so
+ADD odbcinst.ini /etc/odbcinst.ini
+RUN apt-get update
+RUN apt-get install -y tdsodbc unixodbc-dev
+RUN apt install unixodbc-bin -y
+RUN apt-get clean -y
+
+
 RUN pip3 install -r requirements.txt
 
-RUN pip3 install pyodbc
+
 RUN apt update
 RUN ls -l
+
+
 
 EXPOSE 2024
 
