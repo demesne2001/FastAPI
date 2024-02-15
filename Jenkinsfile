@@ -21,7 +21,8 @@ pipeline {
                     a=1
                     if(a>0)
                     {
-                        
+                         bat 'docker stop backendproject'
+                         bat 'docker rm backendproject'
                     }
                 }
                 echo 'Docker Image done'
