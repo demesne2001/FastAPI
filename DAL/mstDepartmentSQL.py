@@ -1,5 +1,5 @@
 from utility import DBConfig
-# import pyodbc
+import pyodbc
 from Entity.mstDepartmentEntity import mstDepartment
 from datetime import datetime
 
