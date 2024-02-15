@@ -13,7 +13,7 @@ COPY . /Backend
 
 
 RUN apt-get update
-RUN apt-get update && apt-get install -y tdsodbc unixodbc-dev \ && apt install unixodbc-bin -y \ && apt-get clean -y
+RUN apt-get install -y tdsodbc unixodbc-dev \ && apt install unixodbc-bin -y \ && apt-get clean -y
 RUN echo "[FreeTDS]\n\ Description = FreeTDS unixODBC Driver\n\ Driver = /usr/lib/arm-linux-gnueabi/odbc/libtdsodbc.so\n\ Setup = /usr/lib/arm-linux-gnueabi/odbc/libtdsS.so" >> /etc/odbcinst.ini
 
 
