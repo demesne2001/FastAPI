@@ -10,7 +10,7 @@ RUN pip3 install fastapi uvicorn
 RUN pip3 install --upgrade pip  
 
 COPY . /Backend
-run sudo apt-get install gcc
+
 
 RUN apt-get update
 RUN apt-get update && apt-get install -y tdsodbc unixodbc-dev \ && apt install unixodbc-bin -y \ && apt-get clean -y
