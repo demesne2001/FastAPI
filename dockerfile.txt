@@ -16,6 +16,6 @@ RUN pip3 install pyodbc
 RUN apt update
 RUN ls -l
 
-EXPOSE 8000
+EXPOSE 2023
 
-CMD uvicorn index:app --reload
+CMD uvicorn index:app --port 2023
