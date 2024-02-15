@@ -17,7 +17,7 @@ RUN pip3 install --upgrade pip
 
 COPY . /Backend
 RUN pip3 install -r requirements.txt
-RUN apt remove libodbc2
+
 RUN apt install libodbc2
 RUN ls -l
 
