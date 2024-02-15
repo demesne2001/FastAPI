@@ -8,7 +8,7 @@ password='Garment'
 
 
 connection = (
-    f'DRIVER=SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Connection Timeout=30;')
+    f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Connection Timeout=30;')
 
 # print("DB Connected")
 
