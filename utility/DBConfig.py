@@ -1,4 +1,4 @@
-import pyodbc
+# import pyodbc
 
 
 server='192.168.2.252'
