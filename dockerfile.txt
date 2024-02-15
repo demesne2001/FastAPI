@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED 1
 
 RUN pip install fastapi uvicorn
 RUN pip install --upgrade pip  
-COPY .
+COPY . /
 RUN ls -l
 
 RUN pip install -r requirements.txt
