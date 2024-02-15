@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from os import path
-from Controller.mstDepartmentController import Department
+from .Controller.mstDepartmentController import Department
 app=FastAPI()
 
 app.include_router(Department,prefix='/Department')
