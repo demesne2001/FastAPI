@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from Service import mstDepartmentService
-from ..Entity.mstDepartmentEntity import mstDepartment
+from Entity.mstDepartmentEntity import mstDepartment
 Department=APIRouter()
 
 @Department.post('/GetDepartmentList')

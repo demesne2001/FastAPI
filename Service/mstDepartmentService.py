@@ -1,5 +1,5 @@
-from ..Entity import Result,mstDepartmentEntity
-from ..DAL import mstDepartmentSQL
+from Entity import Result,mstDepartmentEntity
+from DAL import mstDepartmentSQL
 
 
 def GetList():

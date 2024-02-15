@@ -1,6 +1,6 @@
-from ..utility import DBConfig
+from utility import DBConfig
 import pyodbc
-from ..Entity.mstDepartmentEntity import mstDepartment
+from Entity.mstDepartmentEntity import mstDepartment
 from datetime import datetime
 
 def Listing():
