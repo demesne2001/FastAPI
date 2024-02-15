@@ -18,7 +18,7 @@ RUN curl https://packages.microsoft.com/config/debian/9/prod.list > /etc/apt/sou
 RUN apt-get update
 RUN apt-get -y install unixodbc-dev
 RUN pip install pyodbc
-RUN ACCEPT_EULA=Y apt-get -y install msodbcsql18 
+RUN ACCEPT_EULA=Y apt-get -y install msodbcsql17 
 
 
 
