@@ -11,12 +11,13 @@ ENV PYTHONUNBUFFERED 1
 
 
 RUN pip3 install fastapi uvicorn
-RUN pip3 install pyodbc
+
 RUN pip3 install --upgrade pip  
 
 
 COPY . /Backend
 RUN pip3 install -r requirements.txt
+RUN pip3 install pyodbc
 RUN ls -l
 
 
