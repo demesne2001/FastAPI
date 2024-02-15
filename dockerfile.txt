@@ -17,8 +17,8 @@ RUN pip3 install --upgrade pip
 
 COPY . /Backend
 RUN pip3 install -r requirements.txt
-
 RUN python pyodbc.py
+
 RUN ls -l
 
 
