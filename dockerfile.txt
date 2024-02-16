@@ -21,7 +21,7 @@ RUN apt-get -y install unixodbc-dev
 RUN pip install pyodbc
 
 RUN ACCEPT_EULA=Y apt-get -y install msodbcsql17 
-
+COPY openssl.cnf /etc/ssl/openssl.cnf
 
 RUN pip3 install -r requirements.txt
 
