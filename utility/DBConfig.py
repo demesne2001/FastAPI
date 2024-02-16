@@ -1,14 +1,14 @@
 # import pyodbc
 
 
-server='192.168.2.252'
+server='192.168.2.252,1433'
 database='GRetail_Extreme'
 username='Garment'
 password='Garment'
 
 
 connection = (
-    f'DRIVER=ODBC Driver 17 for SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Connection Timeout=30;')
+    f'DRIVER=ODBC Driver 17 for SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password};Trusted_Connection=no;Connection Timeout=30;')
 
 # print("DB Connected")
 
