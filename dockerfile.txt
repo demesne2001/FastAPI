@@ -12,15 +12,20 @@ RUN pip3 install --upgrade pip
 COPY . /Backend
 
 
-RUN apt-get update
+
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-RUN curl https://packages.microsoft.com/config/debian/9/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list
 RUN apt-get update
+RUN ACCEPT_EULA=Y apt-get -y install msodbcsql18 
+RUN ACCEPT_EULA=Y apt-get -y install mssql-tools18 
+run echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
+run source ~/.bashrc
 RUN apt-get -y install unixodbc-dev
+sudo apt-get install -y libgssapi-krb5-2
 
 RUN pip install pyodbc
 
-RUN ACCEPT_EULA=Y apt-get -y install msodbcsql17 
+
 COPY openssl.cnf /etc/ssl/openssl.cnf
 
 
