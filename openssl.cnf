@@ -15,7 +15,7 @@ openssl_conf = default_conf
 HOME			= .
 
 # Use this in order to automatically load providers.
-
+openssl_conf = default_conf
 
 # Comment out the next line to ignore configuration errors
 config_diagnostics = 1
