@@ -4,6 +4,7 @@ from Entity.mstDepartmentEntity import mstDepartment
 from datetime import datetime
 
 def Listing():
+    print(DBConfig.connection)
     connection=pyodbc.connect(DBConfig.connection)
     cursor=connection.cursor()
     cursor.execute("EXEC ws_mstDesign_Demo")

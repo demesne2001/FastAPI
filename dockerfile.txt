@@ -23,9 +23,6 @@ RUN pip install pyodbc
 RUN ACCEPT_EULA=Y apt-get -y install msodbcsql17 
 
 
-
-
-
 RUN pip3 install -r requirements.txt
 
 
