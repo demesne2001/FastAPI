@@ -5,7 +5,7 @@ from datetime import datetime
 
 def Listing():
     print(DBConfig.connection)
-    print(pyodbc.drivers)
+    print(pyodbc.drivers())
     connection=pyodbc.connect(DBConfig.connection)
     cursor=connection.cursor()
     cursor.execute("EXEC ws_mstDesign_Demo")
