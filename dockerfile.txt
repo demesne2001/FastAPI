@@ -24,12 +24,16 @@ run apt-get install -y libgssapi-krb5-2
 
 RUN pip install pyodbc
 
+RUN chmod +rwx /etc/ssl/openssl.cnf
+RUN sed -i 's/TLSv1.2/TLSv1/g' /etc/ssl/openssl.cnf
+RUN sed -i 's/SECLEVEL=2/SECLEVEL=1/g' /etc/ssl/openssl.cnf
+
 
 
 
 
 RUN pip3 install -r requirements.txt
-COPY openssl.cnf /etc/ssl/openssl.cnf
+
 
 RUN apt update
 RUN ls -l
