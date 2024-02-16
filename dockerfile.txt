@@ -21,7 +21,7 @@ RUN ACCEPT_EULA=Y apt-get -y install mssql-tools18
 run echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc
 run source ~/.bashrc
 RUN apt-get -y install unixodbc-dev
-sudo apt-get install -y libgssapi-krb5-2
+run sudo apt-get install -y libgssapi-krb5-2
 
 RUN pip install pyodbc
 
