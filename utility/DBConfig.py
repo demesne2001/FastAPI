@@ -1,6 +1,5 @@
 # import pyodbc
 
-
 server='192.168.1.241,2017'
 database='GRetail_Extreme_training1'
 username='Garment'
