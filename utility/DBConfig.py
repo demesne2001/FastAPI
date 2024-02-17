@@ -1,8 +1,8 @@
 # import pyodbc
 
 
-server='192.168.1.241,2017'
-database='GRetail_Extreme_training'
+server='192.168.2.252'
+database='GRetail_Extreme'
 username='Garment'
 password='Garment'
 
