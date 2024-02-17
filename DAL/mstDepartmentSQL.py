@@ -4,8 +4,8 @@ from Entity.mstDepartmentEntity import mstDepartment
 from datetime import datetime
 
 def Listing():
-    print(DBConfig.connection)
-    print(pyodbc.drivers())
+    print('driver=====>>>>>>',DBConfig.connection)
+    print('driver=====>>>>>>',pyodbc.drivers())
     connection=pyodbc.connect(DBConfig.connection)
     cursor=connection.cursor()
     cursor.execute("EXEC ws_mstDesign_Demo")
