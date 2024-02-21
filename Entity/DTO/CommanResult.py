@@ -1,12 +1,10 @@
 from pydantic import BaseModel,Field
 
 class CommanResult:
-    def __init__(self) :
-        self.Message=[]
-        self.HasError=False
-
-
-
+    def __init__(self):
+        self.Message = []
+        self.HasError = False
+        
 class UserSchema(BaseModel):
     fullname:str = Field(default=None)
     email:str= Field(default=None)

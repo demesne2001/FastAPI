@@ -1,11 +1,13 @@
 from Entity.DTO import CommanResult
 
-class ListingResult():
+class ListingResult(CommanResult.CommanResult):
     def __init__(self):
+        super().__init__()
         self.LstDepartMent=[]
+        
 
 
-class AddEditResult():
+class AddEditResult(CommanResult.CommanResult):
     def __init__(self):
-        self.Message=[]
+        pass
 
