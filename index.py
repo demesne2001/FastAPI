@@ -38,6 +38,7 @@ def register(data:UserSchema=Body(default=None)):
 def checkuser(data:UserLoginSchema):
     print(users)
     print(len(users))
+    
     coun=0
     for user in users:
         coun+=1
