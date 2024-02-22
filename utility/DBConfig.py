@@ -13,7 +13,7 @@ connection = (
     f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')
 
 # connection = (
-#     f'DRIVER=ODBC Driver 17 for SQL Server;S  ERVER={server1};DATABASE={database1};UID={username1};PWD={password1};')
+#     f'DRIVER=ODBC Driver 17 for SQL Server;SERVER={server1};DATABASE={database1};UID={username1};PWD={password1};')
 
 
 
