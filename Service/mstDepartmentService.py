@@ -10,8 +10,8 @@ def GetList():
 
 def AddEdit(input:mstDepartmentEntity):
     result=Result.AddEditResult()
-    if(pythonCommanLibrary.IsNullOREmpty(input.mstDepartment.DepartmentName)):
-        result.Message.append("Required Field DepartmentName")
+    # if(pythonCommanLibrary.IsNullOREmpty(input.mstDepartment.DepartmentName)):
+    #     result.Message.append("Required Field DepartmentName")
     if(len(result.Message)==0):
         try:
             id=mstDepartmentSQL.AddEdit(input)

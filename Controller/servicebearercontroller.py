@@ -1,4 +1,4 @@
-from typing_extensions import Annotated, Doc
+from typing_extensions import Annotated
 from fastapi import Request,HTTPException
 from fastapi.security import HTTPBearer,HTTPAuthorizationCredentials
 from .ServiceController import decodeJWT
@@ -11,8 +11,11 @@ class jwtBearer(HTTPBearer):
         credentails: HTTPAuthorizationCredentials=await super(jwtBearer,self).__call__(request)
         if credentails:
             print('First Condition')
-            if not credentails.scheme=="Bearer":
+            print(credentails.scheme)
+            if not credentails.scheme=="Bearer":                
                 raise HTTPException(status_code=403,detail="Invalid or Expired Token ..!")
+            # if(jwtBearer.verify_jwt(self,credentails)):
+            #     raise HTTPException(status_code=403,detail="Invalid or Expired Token ..!")
             return credentails.credentials
         else:
             print('First Condition false')
