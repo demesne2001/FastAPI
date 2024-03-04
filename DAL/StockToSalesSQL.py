@@ -6,8 +6,8 @@ from Entity.DTO.Input import StockSales
 def BIrpt_StockAgainSales_GetRPT(input:StockSales):
     key_value_pairs=[]
     param=''
-    print('connectionstring',DBConfig.WRconnection)
-    connection=pyodbc.connect(DBConfig.WRconnection)
+    print('connectionstring',DBConfig.connection)
+    connection=pyodbc.connect(DBConfig.connection)
     try:
         if(len(input.FromDate) > 0):
             param +=f" @FromDate='{input.FromDate}',"
