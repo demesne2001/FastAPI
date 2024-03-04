@@ -12,4 +12,8 @@ class AddEditResult(CommanResult.CommanResult):
         super().__init__()
         pass
 
+class StockToSalesResult(CommanResult.CommanResult):
+    def __init__(self):
+        super().__init__()
+        self.lstResult=[]
 
