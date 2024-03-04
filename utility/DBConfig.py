@@ -6,7 +6,7 @@ username='Garment'
 password='Garment'
 
 WRserver='110.227.251.94,25672'
-WRatabase='Jsoft_WhExtreme_Tableau_ForWebReport'
+WRatabase='JsoftWhExtreme_Tableau_ForWebReport'
 WRsername='Garment'
 WRassword='AlpNV@123'
 
