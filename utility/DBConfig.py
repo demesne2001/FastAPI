@@ -22,7 +22,7 @@ connection = (
 #     f'DRIVER=ODBC Driver 17 for SQL Server;SERVER={server1};DATABASE={database1};UID={username1};PWD={password1};')
 
 WRconnection = (
-    f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={server};DATABASE={WRatabase};UID={WRsername};PWD={WRassword};')
+    f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={server};DATABASE={WRatabase};UID={WRsername};PWD={WRassword};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')
 
 def execute_stored_procedure(connection_string,procedure_name,*params):
     connection = pyodbc.connect(connection_string)
