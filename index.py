@@ -11,11 +11,8 @@ app=FastAPI()
 logger.info('Start APi Log')
 
 users=[]
-users.append({
-  "fullname": "om",
-  "email": "om@gmail.com",
-  "password": "12345"
-})
+defauluser=UserSchema(fullname='om', email='om@gmail.com', password='12345')
+users.append(defauluser)
 app.include_router(mstDepartmentController.Department,prefix='/Department')
 app.include_router(StockToSalesController.StockToSales,prefix='/StockToSales')
 origins=['*']
@@ -28,6 +25,8 @@ def Demo():
 
 @app.post("/login")
 def login(data:UserLoginSchema=Body(default=None)):
+    print('req',data)
+    print('userarr',users)
     if checkuser(data):
          return signJWT(data.email)
     else:
