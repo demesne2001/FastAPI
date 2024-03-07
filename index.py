@@ -11,6 +11,11 @@ app=FastAPI()
 logger.info('Start APi Log')
 
 users=[]
+users.append({
+  "fullname": "om",
+  "email": "om@gmail.com",
+  "password": "12345"
+})
 app.include_router(mstDepartmentController.Department,prefix='/Department')
 app.include_router(StockToSalesController.StockToSales,prefix='/StockToSales')
 origins=['*']
