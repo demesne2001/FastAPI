@@ -9,7 +9,8 @@ class UserSchema(BaseModel):
     fullname:str = Field(default=None)
     email:str= Field(default=None)
     password:str= Field(default=None)
-    class congif:
+
+class congif:
         the_demo={
             "Demo":{
                 "fullname":"om",
@@ -21,7 +22,8 @@ class UserSchema(BaseModel):
 class UserLoginSchema(BaseModel):
     email:str= Field(default=None)
     password:str= Field(default=None)
-    class congif:
+    
+class congif:
         the_demo={
             "Demo":{
                 "email":"patelom109@gmail.com",

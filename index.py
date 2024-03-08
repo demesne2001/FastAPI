@@ -30,7 +30,7 @@ def login(data:UserLoginSchema=Body(default=None)):
     if checkuser(data):
          return signJWT(data.email)
     else:
-        return {
+        return {    
                 "Error":"Data is not Found"
             }
        
