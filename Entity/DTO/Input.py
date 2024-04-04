@@ -17,4 +17,4 @@ class UploadFile(BaseModel):
 class Listinginput(BaseModel):
     PageNo:int
     Pagesize:int
-    Search:int
+    Search:str
