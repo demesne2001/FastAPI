@@ -5,6 +5,11 @@ database='GRetailExtreme_ANYBODY'
 username='Garment'
 password='Garment'
 
+serverj='192.168.1.241,2017'
+databasej='JsoftWhExtreme_Tableau_ForWebReport'
+usernamej='Garment'
+passwordj='Garment'
+
 WRserver='110.227.251.94,25672'
 WRatabase='JsoftWhExtreme_Tableau_ForWebReport'
 WRsername='Garment'
@@ -17,6 +22,9 @@ password1='Garment'
 
 connection = (
     f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')
+
+jconnection = (
+    f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={serverj};DATABASE={databasej};UID={usernamej};PWD={passwordj};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')
 
 # connection = (
 #     f'DRIVER=ODBC Driver 17 for SQL Server;SERVER={server1};DATABASE={database1};UID={username1};PWD={password1};')
