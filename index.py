@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI,Body,Depends
 from os import path
-from Controller import mstDepartmentController,StockToSalesController
+from Controller import mstDepartmentController,StockToSalesController,MastersController
 from Controller.ServiceController import signJWT
 from fastapi.middleware.cors import CORSMiddleware
 from Entity.DTO.CommanResult import UserLoginSchema,UserSchema
@@ -16,6 +16,7 @@ defauluser=UserSchema(fullname='om', email='om@gmail.com', password='12345')
 users.append(defauluser)
 app.include_router(mstDepartmentController.Department,prefix='/Department')
 app.include_router(StockToSalesController.StockToSales,prefix='/StockToSales')
+app.include_router(MastersController.mstDepartment,prefix='/Master')
 origins=['*']
 
 app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=True,allow_methods=['*'],allow_headers=['*'],)
