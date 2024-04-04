@@ -55,7 +55,7 @@ async def DeleteBrand():
     return result.__dict__
 
 @Master.post('/GetProductListing', dependencies=[Depends(jwtBearer())])
-async def GetProductListing():
+async def GetProductListing(input:Listinginput):
     result= MasterService.commanListingService(input,"WE_mstProduct_GetForlisting","GetProductListing")
     return result.__dict__
 
@@ -70,7 +70,7 @@ async def DeleteProduct():
     return result.__dict__
 
 @Master.post('/GetStyleListing', dependencies=[Depends(jwtBearer())])
-async def GetStyleListing():
+async def GetStyleListing(input:Listinginput):
     result= MasterService.commanListingService(input,"WE_mstStyle_GetForlisting","GetStyleListing")
     return result.__dict__
 
@@ -85,7 +85,7 @@ async def DeleteStyle():
     return result.__dict__
 
 @Master.post('/GetItemGroupListing', dependencies=[Depends(jwtBearer())])
-async def GetItemGroupListing():
+async def GetItemGroupListing(input:Listinginput):
     result= MasterService.commanListingService(input,"WE_mstItemGroup_GetForlisting","GetItemGroupListing")
     return result.__dict__
 
@@ -100,7 +100,7 @@ async def DeleteItemGroup():
     return result.__dict__
 
 @Master.post('/GetItemListing', dependencies=[Depends(jwtBearer())])
-async def GetItemListing():
+async def GetItemListing(input:Listinginput):
     result= MasterService.commanListingService(input,"WE_mstItem_GetForlisting","GetItemListing")
     return result.__dict__
 
@@ -115,7 +115,7 @@ async def DeleteItem():
     return result.__dict__
 
 @Master.post('/GetDesignListing', dependencies=[Depends(jwtBearer())])
-async def Listing():
+async def Listing(input:Listinginput):
     result= MasterService.commanListingService(input,"WE_mstDesign_GetForlisting","GetDesignListing")
     return result.__dict__
 
@@ -130,7 +130,7 @@ async def DeleteDesign():
     return result.__dict__
 
 @Master.post('/GetColorListing', dependencies=[Depends(jwtBearer())])
-async def GetColorListing():
+async def GetColorListing(input:Listinginput):
     result= MasterService.commanListingService(input,"WE_mstColor_GetForlisting","GetColorListing")
     return result.__dict__
 
