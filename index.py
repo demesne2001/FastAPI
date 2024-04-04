@@ -19,7 +19,7 @@ app.include_router(StockToSalesController.StockToSales,prefix='/StockToSales')
 origins=['*']
 
 app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=True,allow_methods=['*'],allow_headers=['*'],)
---app.mount("/image", StaticFiles(directory="image"), name="images")
+
 @app.post("/", dependencies=[Depends(jwtBearer())])
 def Demo():
     return{"msg":"Welcome to Fast"}
