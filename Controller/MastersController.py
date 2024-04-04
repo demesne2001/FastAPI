@@ -16,12 +16,12 @@ async def GetAccountListing(input:Listinginput):
 
 @Master.post('/AddEditAccount', dependencies=[Depends(jwtBearer())])
 async def AddEditAccount():
-    result= mstDepartmentService.AddEditAccount()
+    result= MasterService.AddEditAccount()
     return result.__dict__
 
 @Master.post('/DeleteAccount', dependencies=[Depends(jwtBearer())])
 async def DeleteAccount():
-    result= mstDepartmentService.DeleteAccount()
+    result= MasterService.DeleteAccount()
     return result.__dict__
 
 @Master.post('/GetBankListing', dependencies=[Depends(jwtBearer())])
@@ -31,115 +31,115 @@ async def GetBankListing(input:Listinginput):
 
 @Master.post('/AddEditBank', dependencies=[Depends(jwtBearer())])
 async def AddEditBank():
-    result= mstDepartmentService.AddEditBank()
+    result= MasterService.AddEditBank()
     return result.__dict__
 
 @Master.post('/DeleteBank', dependencies=[Depends(jwtBearer())])
 async def DeleteBank():
-    result= mstDepartmentService.DeleteBank()
+    result= MasterService.DeleteBank()
     return result.__dict__
 
 @Master.post('/GetBrandListing', dependencies=[Depends(jwtBearer())])
 async def GetBrandListing(input:Listinginput):
-    result= mstDepartmentService.commanListingService(input,"","GetBrandListing")
+    result= MasterService.commanListingService(input,"WE_mstBrand_GetForlisting","GetBrandListing")
     return result.__dict__
 
 @Master.post('/AddEditBrand', dependencies=[Depends(jwtBearer())])
 async def AddEditBrand():
-    result= mstDepartmentService.AddEditBrand()
+    result= MasterService.AddEditBrand()
     return result.__dict__
 
 @Master.post('/DeleteBrand', dependencies=[Depends(jwtBearer())])
 async def DeleteBrand():
-    result= mstDepartmentService.DeleteBrand()
+    result= MasterService.DeleteBrand()
     return result.__dict__
 
 @Master.post('/GetProductListing', dependencies=[Depends(jwtBearer())])
 async def GetProductListing():
-    result= mstDepartmentService.commanListingService(input,"","GetProductListing")
+    result= MasterService.commanListingService(input,"WE_mstProduct_GetForlisting","GetProductListing")
     return result.__dict__
 
 @Master.post('/AddEditProduct', dependencies=[Depends(jwtBearer())])
 async def AddEditProduct():
-    result= mstDepartmentService.AddEditProduct()
+    result= MasterService.AddEditProduct()
     return result.__dict__
 
 @Master.post('/DeleteProduct', dependencies=[Depends(jwtBearer())])
 async def DeleteProduct():
-    result= mstDepartmentService.DeleteProduct()
+    result= MasterService.DeleteProduct()
     return result.__dict__
 
 @Master.post('/GetStyleListing', dependencies=[Depends(jwtBearer())])
 async def GetStyleListing():
-    result= mstDepartmentService.commanListingService(input,"","GetStyleListing")
+    result= MasterService.commanListingService(input,"WE_mstStyle_GetForlisting","GetStyleListing")
     return result.__dict__
 
 @Master.post('/AddEditStyle', dependencies=[Depends(jwtBearer())])
 async def AddEditStyle():
-    result= mstDepartmentService.AddEditStyle()
+    result= MasterService.AddEditStyle()
     return result.__dict__
 
 @Master.post('/DeleteStyle', dependencies=[Depends(jwtBearer())])
 async def DeleteStyle():
-    result= mstDepartmentService.DeleteStyle()
+    result= MasterService.DeleteStyle()
     return result.__dict__
 
 @Master.post('/GetItemGroupListing', dependencies=[Depends(jwtBearer())])
 async def GetItemGroupListing():
-    result= mstDepartmentService.commanListingService(input,"","GetItemGroupListing")
+    result= MasterService.commanListingService(input,"WE_mstItemGroup_GetForlisting","GetItemGroupListing")
     return result.__dict__
 
 @Master.post('/AddEditItemGroup', dependencies=[Depends(jwtBearer())])
 async def AddEditItemGroup():
-    result= mstDepartmentService.AddEditItemGroup()
+    result= MasterService.AddEditItemGroup()
     return result.__dict__
 
 @Master.post('/DeleteItemGroup', dependencies=[Depends(jwtBearer())])
 async def DeleteItemGroup():
-    result= mstDepartmentService.DeleteItemGroup()
+    result= MasterService.DeleteItemGroup()
     return result.__dict__
 
 @Master.post('/GetItemListing', dependencies=[Depends(jwtBearer())])
 async def GetItemListing():
-    result= mstDepartmentService.commanListingService(input,"","GetItemListing")
+    result= MasterService.commanListingService(input,"WE_mstItem_GetForlisting","GetItemListing")
     return result.__dict__
 
 @Master.post('/AddEditItem', dependencies=[Depends(jwtBearer())])
 async def AddEditItem():
-    result= mstDepartmentService.AddEditItem()
+    result= MasterService.AddEditItem()
     return result.__dict__
 
 @Master.post('/DeleteItem', dependencies=[Depends(jwtBearer())])
 async def DeleteItem():
-    result= mstDepartmentService.DeleteItem()
+    result= MasterService.DeleteItem()
     return result.__dict__
 
 @Master.post('/GetDesignListing', dependencies=[Depends(jwtBearer())])
 async def Listing():
-    result= mstDepartmentService.commanListingService(input,"","GetDesignListing")
+    result= MasterService.commanListingService(input,"WE_mstDesign_GetForlisting","GetDesignListing")
     return result.__dict__
 
 @Master.post('/AddEditDesign', dependencies=[Depends(jwtBearer())])
 async def AddEditDesign():
-    result= mstDepartmentService.AddEditDesign()
+    result= MasterService.AddEditDesign()
     return result.__dict__
 
 @Master.post('/DeleteDesign', dependencies=[Depends(jwtBearer())])
 async def DeleteDesign():
-    result= mstDepartmentService.DeleteDesign()
+    result= MasterService.DeleteDesign()
     return result.__dict__
 
 @Master.post('/GetColorListing', dependencies=[Depends(jwtBearer())])
 async def GetColorListing():
-    result= mstDepartmentService.commanListingService(input,"","GetColorListing")
+    result= MasterService.commanListingService(input,"WE_mstColor_GetForlisting","GetColorListing")
     return result.__dict__
 
 @Master.post('/AddEditColor', dependencies=[Depends(jwtBearer())])
 async def AddEditColor():
-    result= mstDepartmentService.AddEditColor()
+    result= MasterService.AddEditColor()
     return result.__dict__
 
 @Master.post('/DeleteColor', dependencies=[Depends(jwtBearer())])
 async def DeleteAccount():
-    result= mstDepartmentService.DeleteColor()
+    result= MasterService.DeleteColor()
     return result.__dict__
