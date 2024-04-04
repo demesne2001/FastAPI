@@ -4,12 +4,13 @@ from Entity.mstDepartmentEntity import mstDepartment
 from Entity.DTO.Input import UploadFile
 from Controller.servicebearercontroller import jwtBearer
 from pathlib import Path
+from Entity.DTO.Input import Listinginput
 import base64
 Master=APIRouter()
 
 
 @Master.post('/GetAccountListing', dependencies=[Depends(jwtBearer())])
-async def GetAccountListing():
+async def GetAccountListing(input:Listinginput):
     result= MasterService.commanListingService(input,"WE_mstAccount_GetListing","GetAccountListing")
     return result.__dict__
 
@@ -24,7 +25,7 @@ async def DeleteAccount():
     return result.__dict__
 
 @Master.post('/GetBankListing', dependencies=[Depends(jwtBearer())])
-async def GetBankListing():
+async def GetBankListing(input:Listinginput):
     result= MasterService.commanListingService(input,"WE_mstAccount_GetListing","GetBankListing")
     return result.__dict__
 
@@ -39,7 +40,7 @@ async def DeleteBank():
     return result.__dict__
 
 @Master.post('/GetBrandListing', dependencies=[Depends(jwtBearer())])
-async def GetBrandListing():
+async def GetBrandListing(input:Listinginput):
     result= mstDepartmentService.commanListingService(input,"","GetBrandListing")
     return result.__dict__
 
