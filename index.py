@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from Entity.DTO.CommanResult import UserLoginSchema,UserSchema
 from Controller.servicebearercontroller import jwtBearer
 from utility.Logger import logger
+from fastapi.staticfiles import StaticFiles
 app=FastAPI()
 logger.info('Start APi Log')
 
@@ -18,7 +19,7 @@ app.include_router(StockToSalesController.StockToSales,prefix='/StockToSales')
 origins=['*']
 
 app.add_middleware(CORSMiddleware,allow_origins=origins,allow_credentials=True,allow_methods=['*'],allow_headers=['*'],)
-
+app.mount("/image", StaticFiles(directory="image"), name="images")
 @app.post("/", dependencies=[Depends(jwtBearer())])
 def Demo():
     return{"msg":"Welcome to Fast"}

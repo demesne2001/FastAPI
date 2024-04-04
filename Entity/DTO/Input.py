@@ -9,3 +9,12 @@ class StockSales(BaseModel):
     strItemID:str
     Unit:str
     PrintGroupBy :str
+    
+class UploadFile(BaseModel):
+    Base64:str
+    Email:str
+    
+class Listinginput(BaseModel):
+    PageNo:int
+    Pagesize:int
+    Search:int

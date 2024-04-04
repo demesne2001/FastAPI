@@ -17,3 +17,7 @@ class StockToSalesResult(CommanResult.CommanResult):
         super().__init__()
         self.lstResult=[]
 
+class CommonListingResult(CommanResult.CommanResult):
+    def __init__(self):
+        super().__init__()
+        self.lstResult=[]

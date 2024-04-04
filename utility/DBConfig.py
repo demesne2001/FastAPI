@@ -1,7 +1,7 @@
-# import pyodbc
+import pyodbc
 
-server='192.168.1.241,2017'
-database='GRetail_Extreme_training1'
+server='192.168.1.241,20017'
+database='GRetailExtreme_ANYBODY'
 username='Garment'
 password='Garment'
 
@@ -41,3 +41,25 @@ def execute_stored_procedure(connection_string,procedure_name,*params):
     finally:
         cursor.close()
         connection.close()
+
+def ExecuteDataReader(param,spname,MethodNname):    
+    key_value_pairs=[]
+    drivers = [item for item in pyodbc.drivers()]    
+    connection=pyodbc.connect(connection)
+    try:
+        cursor=connection.cursor()        
+        cursor.execute(f"EXEC {spname} {param}")
+        columns = [column[0] for column in cursor.description]
+        rows = cursor.fetchall()    
+        print(rows)    
+        for row in rows:
+            key_value_pairs.append(dict(zip(columns, row)))
+        print(key_value_pairs)
+        cursor.close()
+        connection.close()
+    except Exception as e:
+        print(MethodNname + 'Error :- ',e)
+        print('SQL Query',f"EXEC {spname} {param}")
+        print('driver',drivers)
+        connection.close()
+    return key_value_pairs
