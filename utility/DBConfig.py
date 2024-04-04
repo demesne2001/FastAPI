@@ -45,9 +45,9 @@ def execute_stored_procedure(connection_string,procedure_name,*params):
 def ExecuteDataReader(param,spname,MethodNname):    
     key_value_pairs=[]
     drivers = [item for item in pyodbc.drivers()]    
-    connection=pyodbc.connect(connection)
+    wconnection=pyodbc.connect(connection)
     try:
-        cursor=connection.cursor()        
+        cursor=wconnection.cursor()        
         cursor.execute(f"EXEC {spname} {param}")
         columns = [column[0] for column in cursor.description]
         rows = cursor.fetchall()    
@@ -61,5 +61,5 @@ def ExecuteDataReader(param,spname,MethodNname):
         print(MethodNname + 'Error :- ',e)
         print('SQL Query',f"EXEC {spname} {param}")
         print('driver',drivers)
-        connection.close()
+        wconnection.close()
     return key_value_pairs
