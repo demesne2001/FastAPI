@@ -90,57 +90,68 @@ def ExcuteNonQuery(param,spname,MethodNname,Result):
         # print('driver',drivers)
            #    Result.Message=ExecuteDataReader()
         result=f"Error ModuleName:{MethodNname},SPName:{spname},Param:{param},Error:{e}"
+        print(e)
         Result.HasError=True
         cursor.rollback()        
     finally:
         cursor.close()
         wconnection.close()
+    wconnection2=pyodbc.connect(connection)
+    cursor2=wconnection2.cursor()
     try:
         constrain=str(ExceptionREsult).split("REFERENCE constraint")
         constrain=constrain[1].split('"')
         table=str(ExceptionREsult).split("table")
         table=table[1].split(",")
-        coloumn=str(ExceptionREsult).split("column")
-        coloumn=coloumn[1].split("\'")       
-        coloumn=coloumn[1].split("\\")       
-
-        # table=table[1].split("")
-        print(constrain[1],'Constraint')
-        print(table[0],'table')
-        print(coloumn[0],'column')
+        
+        
+        if(str(ExceptionREsult).find("column")>=0):
+            print('condition')
+            coloumn=str(ExceptionREsult).split("column")
+            coloumn=coloumn[1].split("\'")       
+            coloumn=coloumn[1].split("\\") 
+        else:
+            coloumn=str(spname).split("mst")      
+            coloumn=coloumn[1].split("_")
+            coloumn=coloumn[0]+"ID"
+        print('colou',coloumn)
         ID=str(param).split(",")
         ID=ID[0].split("=")
+        if(constrain[1]!=""):
+            print(constrain[1],'Constraint')
+        else:
+            print('check',constrain[0])
+        if(table[0]!=''):
+            print(table[0],'table')
+        if(coloumn[0]!=''):
+            print(coloumn[0],'column')
+      
         # print('ID',ID[1])
-        if(constrain[0]!="" and table[0]!="" and coloumn[0]!=""):  
-           wconnection2=pyodbc.connect(connection)
-           cursor2=wconnection2.cursor()
+        if(constrain[0]!="" and table[0]!="" and coloumn[0]!=""):           
            key_value_pairs=[]          
            Exparam=F"@FK_Name='{constrain[1]}',@FieldValue={ID[1]},@FieldName='{coloumn[0]}'"
-           print(f"Exce util_GetForeignReferenceUsingFK {Exparam}")
+        
            cursor2.execute(f"ExeC util_GetForeignReferenceUsingFK {Exparam}")
            columns = [column[0] for column in cursor2.description]
-           rows = cursor2.fetchall() 
-           print('Rows===>>>>',rows )
-           print('columns===>>>>',columns )       
-        #    print('Log',cursor2.nextset())
-           print('Before Condition')
+           rows = cursor2.fetchall()
            while (cursor2.nextset()):
             print('Condition true')
-            # print('columns222===>>>>',cursor2.fetchall() )    
+                
             Nexttable=cursor2.fetchall()
             count=0      
-            columns2 = [column[0] for column in cursor2.description]
+            columns2 = [column[0] for column in cursor2.description]            
             for Item in Nexttable:
                count+=1
                if(count<31):
+                print(dict(zip(columns2, Item)))
                 key_value_pairs.append(dict(zip(columns2, Item)))        
                else:
                 break
             Result.Message.append(key_value_pairs)
-           print(key_value_pairs)           
+        #    print(key_value_pairs)           
     except  Exception as e:
           print(F"Delete Dal Eroor:{e}")
     finally:
-        cursor2.close()
+        cursor2.close()     
         wconnection2.close()  
     return Result
