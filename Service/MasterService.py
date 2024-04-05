@@ -27,8 +27,12 @@ def commanDeleteService(input:DeleteInput,SpName:str,MethodName:str):
     result=CommonDeleteResult()
     print('input',input)
     if(input.ID<=0):
-        result.Message.append("ID Required Field")    
-    if(len(result.Message)==0):
+        result.Message.append("ID Required Field") 
+    # if(ValidatationSP !=""):
+    #     result.DependentChild=DeleteValidation(input.ID,ValidatationSP)
+    #     if(len(result.DependentChild)>0):
+    #         result.HasError=True
+    if(len(result.Message)==0 and result.HasError == False):
         param=""        
         param +=f" @ID={input.ID},@UserID=1"  
         print(param)   
@@ -37,3 +41,10 @@ def commanDeleteService(input:DeleteInput,SpName:str,MethodName:str):
         result.HasError=True
     return result
     
+def DeleteValidation(ID:int,SPName:str):
+    lstResult=[]
+    param=""
+    if(input.ID>0):
+        param +=f" @ID={ID}"
+    lstResult=DBConfig.ExecuteDataReader(param,SPName,"")
+    return lstResult

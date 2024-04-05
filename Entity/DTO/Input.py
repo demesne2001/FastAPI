@@ -21,3 +21,6 @@ class Listinginput(BaseModel):
 
 class DeleteInput(BaseModel):
     ID:int
+
+class DeleteValidation(BaseModel):
+    ID:int
