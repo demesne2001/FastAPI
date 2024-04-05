@@ -4,7 +4,7 @@ from Entity.mstDepartmentEntity import mstDepartment
 from Entity.DTO.Input import UploadFile
 from Controller.servicebearercontroller import jwtBearer
 from pathlib import Path
-from Entity.DTO.Input import Listinginput
+from Entity.DTO.Input import Listinginput,DeleteInput
 import base64
 Master=APIRouter()
 
@@ -20,8 +20,8 @@ async def AddEditAccount():
     return result.__dict__
 
 @Master.post('/DeleteAccount', dependencies=[Depends(jwtBearer())])
-async def DeleteAccount():
-    result= MasterService.DeleteAccount()
+async def DeleteAccount(input:DeleteInput):
+    result= MasterService.commanDeleteService(input,"WE_mstAccount_DeletByID","DeleteAccount")
     return result.__dict__
 
 @Master.post('/GetBankListing', dependencies=[Depends(jwtBearer())])
@@ -35,8 +35,8 @@ async def AddEditBank():
     return result.__dict__
 
 @Master.post('/DeleteBank', dependencies=[Depends(jwtBearer())])
-async def DeleteBank():
-    result= MasterService.DeleteBank()
+async def DeleteBank(input:DeleteInput):
+    result= MasterService.commanDeleteService(input,"WE_mstAccount_DeletByID","DeleteBank")
     return result.__dict__
 
 @Master.post('/GetBrandListing', dependencies=[Depends(jwtBearer())])
@@ -50,8 +50,8 @@ async def AddEditBrand():
     return result.__dict__
 
 @Master.post('/DeleteBrand', dependencies=[Depends(jwtBearer())])
-async def DeleteBrand():
-    result= MasterService.DeleteBrand()
+async def DeleteBrand(input:DeleteInput):
+    result= MasterService.commanDeleteService(input,"WE_mstBrand_DeleteByID","DeleteBrand")
     return result.__dict__
 
 @Master.post('/GetProductListing', dependencies=[Depends(jwtBearer())])
@@ -65,8 +65,8 @@ async def AddEditProduct():
     return result.__dict__
 
 @Master.post('/DeleteProduct', dependencies=[Depends(jwtBearer())])
-async def DeleteProduct():
-    result= MasterService.DeleteProduct()
+async def DeleteProduct(input:DeleteInput):
+    result= MasterService.commanDeleteService(input,"WE_mstProduct_DeleteByID","DeleteProduct")
     return result.__dict__
 
 @Master.post('/GetStyleListing', dependencies=[Depends(jwtBearer())])
@@ -80,8 +80,8 @@ async def AddEditStyle():
     return result.__dict__
 
 @Master.post('/DeleteStyle', dependencies=[Depends(jwtBearer())])
-async def DeleteStyle():
-    result= MasterService.DeleteStyle()
+async def DeleteStyle(input:DeleteInput):
+    result= MasterService.commanDeleteService(input,"WE_mstStyle_DeleteByID","DeleteStyle")
     return result.__dict__
 
 @Master.post('/GetItemGroupListing', dependencies=[Depends(jwtBearer())])
@@ -95,8 +95,8 @@ async def AddEditItemGroup():
     return result.__dict__
 
 @Master.post('/DeleteItemGroup', dependencies=[Depends(jwtBearer())])
-async def DeleteItemGroup():
-    result= MasterService.DeleteItemGroup()
+async def DeleteItemGroup(input:DeleteInput):
+    result= MasterService.commanDeleteService(input,"WE_mstItemGroup_DeleteByID","DeleteItemGroup")
     return result.__dict__
 
 @Master.post('/GetItemListing', dependencies=[Depends(jwtBearer())])
@@ -110,8 +110,8 @@ async def AddEditItem():
     return result.__dict__
 
 @Master.post('/DeleteItem', dependencies=[Depends(jwtBearer())])
-async def DeleteItem():
-    result= MasterService.DeleteItem()
+async def DeleteItem(input:DeleteInput):
+    result= MasterService.commanDeleteService(input,"WE_mstItem_DeleteByID","DeleteItem")
     return result.__dict__
 
 @Master.post('/GetDesignListing', dependencies=[Depends(jwtBearer())])
@@ -125,8 +125,8 @@ async def AddEditDesign():
     return result.__dict__
 
 @Master.post('/DeleteDesign', dependencies=[Depends(jwtBearer())])
-async def DeleteDesign():
-    result= MasterService.DeleteDesign()
+async def DeleteDesign(input:DeleteInput):
+    result= MasterService.commanDeleteService(input,"WE_mstDesign_DeleteByID","DeleteDesign")
     return result.__dict__
 
 @Master.post('/GetColorListing', dependencies=[Depends(jwtBearer())])
@@ -140,6 +140,6 @@ async def AddEditColor():
     return result.__dict__
 
 @Master.post('/DeleteColor', dependencies=[Depends(jwtBearer())])
-async def DeleteAccount():
-    result= MasterService.DeleteColor()
+async def DeleteColor(input:DeleteInput):
+    result= MasterService.commanDeleteService(input,"WE_mstColor_DeleteByID","DeleteColor")
     return result.__dict__

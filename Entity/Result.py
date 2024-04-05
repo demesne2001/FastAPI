@@ -21,3 +21,9 @@ class CommonListingResult(CommanResult.CommanResult):
     def __init__(self):
         super().__init__()
         self.lstResult=[]
+
+
+class CommonDeleteResult(CommanResult.CommanResult):
+    def __init__(self):
+        super().__init__()
+        

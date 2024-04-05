@@ -18,3 +18,6 @@ class Listinginput(BaseModel):
     PageNo:int
     Pagesize:int
     Search:str
+
+class DeleteInput(BaseModel):
+    ID:int

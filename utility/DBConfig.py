@@ -23,6 +23,9 @@ password1='Garment'
 connection = (
     f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')
 
+# connection = (
+#     f'DRIVER=SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password}')
+
 jconnection = (
     f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={serverj};DATABASE={databasej};UID={usernamej};PWD={passwordj};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')
 
@@ -63,11 +66,34 @@ def ExecuteDataReader(param,spname,MethodNname):
         for row in rows:
             key_value_pairs.append(dict(zip(columns, row)))
         print(key_value_pairs)
-        cursor.close()
-        connection.close()
+        cursor.close()        
     except Exception as e:
         print(MethodNname + 'Error :- ',e)
         print('SQL Query',f"EXEC {spname} {param}")
         print('driver',drivers)
+    finally:
         wconnection.close()
     return key_value_pairs
+
+def ExcuteNonQuery(param,spname,MethodNname,Result):
+    result=""
+    drivers = [item for item in pyodbc.drivers()]    
+    wconnection=pyodbc.connect(connection)
+    cursor=wconnection.cursor()   
+    try:
+        print(f"EXEC {spname} {param}")
+        cursor.execute(f"EXEC {spname} {param}")
+        cursor.commit()
+        result="Transaction Comapleted Successfully"
+    except Exception as e:
+        print(MethodNname + 'Error :- ',e)
+        print('SQL Query',f"EXEC {spname} {param}")
+        print('driver',drivers)
+        result=f"Error ModuleName:{MethodNname},SPName:{spname},Param:{param},Error:{e}"
+        Result.HasError=True
+        cursor.rollback()        
+    finally:
+        cursor.close()
+        wconnection.close()        
+    Result.Message.append(result)
+    return Result

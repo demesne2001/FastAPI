@@ -15,20 +15,16 @@ class jwtBearer(HTTPBearer):
 
     async def __call__(self, request: Request) :
         credentails: HTTPAuthorizationCredentials=await super(jwtBearer,self).__call__(request)
-        if credentails:
-            print('First Condition')
-            print(credentails.scheme)
+        if credentails:            
             if not credentails.scheme=="Bearer":                
                 raise HTTPException(status_code=403,detail="Invalid or Expired Token ..!")
             if  (jwtBearer.verify_jwt(credentails.credentials)== False):
                 raise HTTPException(status_code=403,detail="Invalid or Expired Token ..!")
             return credentails.credentials
-        else:
-            print('First Condition false')
+        else:            
             raise HTTPException(status_code=403,detail="Invalid or Expired Token ..!")
     
-    def verify_jwt(jwtToken:str):
-        print(jwtToken)
+    def verify_jwt(jwtToken:str):        
         isTokenValid:bool=False
         payload=decodeJWT(jwtToken)
         # decode_token=jwt.decode(jwtToken,JWT_KEY,algorithm=JWT_ALGO)
