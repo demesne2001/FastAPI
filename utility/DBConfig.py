@@ -127,10 +127,15 @@ def ExcuteNonQuery(param,spname,MethodNname,Result):
            while (cursor2.nextset()):
             print('Condition true')
             # print('columns222===>>>>',cursor2.fetchall() )    
-            Nexttable=cursor2.fetchall()      
+            Nexttable=cursor2.fetchall()
+            count=0      
             columns2 = [column[0] for column in cursor2.description]
             for Item in Nexttable:
-               key_value_pairs.append(dict(zip(columns2, Item)))        
+               count+=1
+               if(count<31):
+                key_value_pairs.append(dict(zip(columns2, Item)))        
+               else:
+                break
             Result.Message.append(key_value_pairs)
            print(key_value_pairs)           
     except  Exception as e:
