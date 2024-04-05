@@ -95,45 +95,47 @@ def ExcuteNonQuery(param,spname,MethodNname,Result):
     finally:
         cursor.close()
         wconnection.close()
-    constrain=str(ExceptionREsult).split("REFERENCE constraint")
-    constrain=constrain[1].split('"')
-    table=str(ExceptionREsult).split("table")
-    table=table[1].split(",")
-    coloumn=str(ExceptionREsult).split("column")
-    coloumn=coloumn[1].split("\'")       
-    coloumn=coloumn[1].split("\\")       
+    try:
+        constrain=str(ExceptionREsult).split("REFERENCE constraint")
+        constrain=constrain[1].split('"')
+        table=str(ExceptionREsult).split("table")
+        table=table[1].split(",")
+        coloumn=str(ExceptionREsult).split("column")
+        coloumn=coloumn[1].split("\'")       
+        coloumn=coloumn[1].split("\\")       
 
-    # table=table[1].split("")
-    print(constrain[1],'Constraint')
-    print(table[0],'table')
-    print(coloumn[0],'column')
-    ID=str(param).split(",")
-    ID=ID[0].split("=")
-    # print('ID',ID[1])
-    if(constrain[0]!="" and table[0]!="" and coloumn[0]!=""):  
-       wconnection2=pyodbc.connect(connection)
-       cursor2=wconnection2.cursor()
-       key_value_pairs=[]          
-       Exparam=F"@FK_Name='{constrain[1]}',@FieldValue={ID[1]},@FieldName='{coloumn[0]}'"
-       print(f"Exce util_GetForeignReferenceUsingFK {Exparam}")
-       cursor2.execute(f"ExeC util_GetForeignReferenceUsingFK {Exparam}")
-       columns = [column[0] for column in cursor2.description]
-       rows = cursor2.fetchall() 
-       print('Rows===>>>>',rows )
-       print('columns===>>>>',columns )       
-    #    print('Log',cursor2.nextset())
-       print('Before Condition')
-       while (cursor2.nextset()):
-        print('Condition true')
-        # print('columns222===>>>>',cursor2.fetchall() )    
-        Nexttable=cursor2.fetchall()      
-        columns2 = [column[0] for column in cursor2.description]
-        for Item in Nexttable:
-           key_value_pairs.append(dict(zip(columns2, Item)))        
-        
-       print(key_value_pairs) 
-       cursor2.close()
-       wconnection2.close()
-                   
-    Result.Message.append(key_value_pairs)
+        # table=table[1].split("")
+        print(constrain[1],'Constraint')
+        print(table[0],'table')
+        print(coloumn[0],'column')
+        ID=str(param).split(",")
+        ID=ID[0].split("=")
+        # print('ID',ID[1])
+        if(constrain[0]!="" and table[0]!="" and coloumn[0]!=""):  
+           wconnection2=pyodbc.connect(connection)
+           cursor2=wconnection2.cursor()
+           key_value_pairs=[]          
+           Exparam=F"@FK_Name='{constrain[1]}',@FieldValue={ID[1]},@FieldName='{coloumn[0]}'"
+           print(f"Exce util_GetForeignReferenceUsingFK {Exparam}")
+           cursor2.execute(f"ExeC util_GetForeignReferenceUsingFK {Exparam}")
+           columns = [column[0] for column in cursor2.description]
+           rows = cursor2.fetchall() 
+           print('Rows===>>>>',rows )
+           print('columns===>>>>',columns )       
+        #    print('Log',cursor2.nextset())
+           print('Before Condition')
+           while (cursor2.nextset()):
+            print('Condition true')
+            # print('columns222===>>>>',cursor2.fetchall() )    
+            Nexttable=cursor2.fetchall()      
+            columns2 = [column[0] for column in cursor2.description]
+            for Item in Nexttable:
+               key_value_pairs.append(dict(zip(columns2, Item)))        
+            Result.Message.append(key_value_pairs)
+           print(key_value_pairs)           
+    except  Exception as e:
+          print(F"Delete Dal Eroor:{e}")
+    finally:
+        cursor2.close()
+        wconnection2.close()  
     return Result
