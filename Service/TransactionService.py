@@ -1,5 +1,5 @@
 from utility import DBConfig
-from Entity.DTO.Input import SalesListingInput,DeleteInput,BarcodeHelpInput
+from Entity.DTO.Input import SalesListingInput,DeleteInput,BarcodeHelpInput,SalesManHelpInput
 from Entity.Result import CommonListingResult,CommonDeleteResult
 
 def trnSaleslisting(input:SalesListingInput):
@@ -83,3 +83,25 @@ def GetBarcodeHelp(input:BarcodeHelpInput):
     else:
         Result.HasError=True
     return Result        
+
+
+def GetSalesmanHelp(input:SalesManHelpInput): 
+    Result=CommonListingResult()
+    if(input.PageNo<=0):
+        Result.Message.append("PageNo")
+    elif(input.Pagesize<=0):
+        Result.Message.append("Pagesize")
+    if(len(Result.Message)==0):
+        param="" 
+        if(input.search !=""):            
+            param +=f" @search='{input.search}',"
+        if(input.strBranchID !=""):            
+            param +=f" @strBranchID='{input.strBranchID}',"
+        if(input.strCompanyID !=""):            
+            param +=f" @strCompanyID='{input.strCompanyID}',"
+        param +=f" @PageSize={input.Pagesize},"
+        param +=f" @PageNo={input.PageNo}"
+        Result=DBConfig.ExecuteDataReaderWithResult(param,"WR_mstSalesman_GetForHelp","GetSalesmanHelp",Result)
+    else:
+        Result.HasError=True
+    return Result  

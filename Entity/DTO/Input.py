@@ -61,3 +61,9 @@ class BarcodeHelpInput(BaseModel):
     PageNo:int
     Pagesize:int
     
+class SalesManHelpInput(BaseModel):
+    strCompanyID:str| None= Field(default='')
+    strBranchID:str| None= Field(default='')
+    search:str| None= Field(default='')
+    PageNo:int
+    Pagesize:int
