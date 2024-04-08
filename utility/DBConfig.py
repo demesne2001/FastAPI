@@ -58,8 +58,7 @@ def ExecuteDataReader(param,spname,MethodNname):
         cursor=wconnection.cursor()        
         cursor.execute(f"EXEC {spname} {param}")
         columns = [column[0] for column in cursor.description]
-        rows = cursor.fetchall()    
-        print(rows)    
+        rows = cursor.fetchall() 
         for row in rows:
             key_value_pairs.append(dict(zip(columns, row)))
         print(key_value_pairs)
@@ -75,13 +74,12 @@ def ExecuteDataReader(param,spname,MethodNname):
 def ExecuteDataReaderWithResult(param,spname,MethodNname,Result):    
     key_value_pairs=[]
     drivers = [item for item in pyodbc.drivers()]    
-    wconnection=pyodbc.connect(connection)
+    wconnection=pyodbc.connect(connection)    
     try:
         cursor=wconnection.cursor()        
         cursor.execute(f"EXEC {spname} {param}")
         columns = [column[0] for column in cursor.description]
-        rows = cursor.fetchall()    
-        print(rows)    
+        rows = cursor.fetchall()             
         for row in rows:
             key_value_pairs.append(dict(zip(columns, row)))
         Result.lstResult=key_value_pairs        

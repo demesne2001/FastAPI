@@ -43,3 +43,21 @@ class SalesListingInput(BaseModel):
     CommaSeperate_CounterID:str | None= Field(default="")
     strBranchID:str | None= Field(default="1")
     DefaultSalesTypeSR:str | None= Field(default="S")
+    
+class BarcodeHelpInput(BaseModel):
+    CompanyID:int | None= Field(default=1)
+    ItemID:int | None= Field(default=0)
+    DesignID:int | None= Field(default=0)
+    ColorID:int | None= Field(default=0)
+    BrandID:int | None= Field(default=0)
+    BranchID:int | None= Field(default=1)
+    CompanyUnitID:int | None= Field(default=1)
+    TranType:str| None= Field(default='A')
+    CompanyBarcode:str| None= Field(default='')
+    Size1:str| None= Field(default='')
+    search:str| None= Field(default='')
+    ABStock:bool | None= Field(default=True)
+    AllStock:bool | None= Field(default=False)
+    PageNo:int
+    Pagesize:int
+    
