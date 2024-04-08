@@ -24,3 +24,23 @@ class DeleteInput(BaseModel):
 
 class DeleteValidation(BaseModel):
     ID:int
+
+class SalesListingInput(BaseModel):
+    CompanyID:int
+    FinYearID:int
+    TranType:str
+    VoucherNo:str
+    VoucherFromDate:str
+    VoucherToDate:str
+    SalesType:str
+    EntryFormType:str
+    CompanyID:int
+    PageNo:int
+    Pagesize:int
+    AccountID:int
+    CompanyUnitID:int
+    FromDaybookID:int
+    ToDaybookID:int
+    CommaSeperate_CounterID:str
+    strBranchID:str
+    DefaultSalesTypeSR:str
