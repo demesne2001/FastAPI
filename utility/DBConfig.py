@@ -72,6 +72,37 @@ def ExecuteDataReader(param,spname,MethodNname):
         wconnection.close()
     return key_value_pairs
 
+def ExecuteDataReaderWithResult(param,spname,MethodNname,Result):    
+    key_value_pairs=[]
+    drivers = [item for item in pyodbc.drivers()]    
+    wconnection=pyodbc.connect(connection)
+    try:
+        cursor=wconnection.cursor()        
+        cursor.execute(f"EXEC {spname} {param}")
+        columns = [column[0] for column in cursor.description]
+        rows = cursor.fetchall()    
+        print(rows)    
+        for row in rows:
+            key_value_pairs.append(dict(zip(columns, row)))
+        Result.lstResult=key_value_pairs        
+        cursor.close()        
+    except Exception as e:
+        print(MethodNname + 'Error :- ',e)
+        print('SQL Query',f"EXEC {spname} {param}")
+        print('driver',drivers)
+        Result.Message.append(
+                {"Error":
+                    {
+                        "Exception":e,
+                        "SQL Query":f"EXEC {spname} {param}",
+                        "driver":drivers,
+                        "MethodNname":MethodNname
+                    }
+                })
+    finally:
+        wconnection.close()
+    return Result
+
 def ExcuteNonQuery(param,spname,MethodNname,Result):
     result=""
     ExceptionREsult=None

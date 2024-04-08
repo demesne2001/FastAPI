@@ -11,5 +11,5 @@ Transaction=APIRouter()
 
 @Transaction.post('/GetSalesListing', dependencies=[Depends(jwtBearer())])
 async def GetAccountListing(input:SalesListingInput):
-    result= TransactionService.trnSaleslisting(input,"WE_mstAccount_GetListing","GetAccountListing")
+    result= TransactionService.trnSaleslisting(input)
     return result.__dict__
