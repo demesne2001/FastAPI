@@ -1,5 +1,5 @@
 from utility import DBConfig
-from Entity.DTO.Input import SalesListingInput,DeleteInput,BarcodeHelpInput,SalesManHelpInput
+from Entity.DTO.Input import SalesListingInput,DeleteInput,BarcodeHelpInput,SalesManHelpInput,VoucherNoInput
 from Entity.Result import CommonListingResult,CommonDeleteResult
 
 def trnSaleslisting(input:SalesListingInput):
@@ -102,6 +102,33 @@ def GetSalesmanHelp(input:SalesManHelpInput):
         param +=f" @PageSize={input.Pagesize},"
         param +=f" @PageNo={input.PageNo}"
         Result=DBConfig.ExecuteDataReaderWithResult(param,"WR_mstSalesman_GetForHelp","GetSalesmanHelp",Result)
+    else:
+        Result.HasError=True
+    return Result  
+
+def GetVoucherNo(input:VoucherNoInput): 
+    Result=CommonListingResult()   
+    if(len(Result.Message)==0):
+        param="" 
+        if(input.CompanyID>0):            
+            param +=f" @CompanyID={input.CompanyID},"
+        if(input.BranchID >0):            
+            param +=f" @BranchID={input.BranchID},"  
+        if(input.FinYearID>0):            
+            param +=f" @FinYearID={input.FinYearID},"   
+        if(input.VoucherDate !=""):            
+            param +=f" @VoucherDate='{input.VoucherDate}',"
+        if(input.VoucherNo !=""):            
+            param +=f" @VoucherNo='{input.VoucherNo}',"
+        if(input.TranType !=""):            
+            param +=f" @TranType='{input.TranType}',"
+        if(input.TableName !=""):            
+            param +=f" @TableName='{input.TableName}',"
+        if(input.DaybookID>0):            
+            param +=f" @DaybookID={input.DaybookID},"
+        if(input.CompanyUnitID>0):            
+            param +=f" @CompanyUnitID={input.CompanyUnitID}"
+        Result=DBConfig.ExecuteDataReaderWithResult(param,"WE_trnGetVoucherNoMissing","GetVoucherNo",Result)
     else:
         Result.HasError=True
     return Result  

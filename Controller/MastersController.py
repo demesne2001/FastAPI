@@ -4,7 +4,8 @@ from Entity.mstDepartmentEntity import mstDepartment
 from Entity.DTO.Input import UploadFile
 from Controller.servicebearercontroller import jwtBearer
 from pathlib import Path
-from Entity.DTO.Input import Listinginput,DeleteInput
+from Entity.DTO import Input
+from Entity.DTO.Input import Listinginput,DeleteInput,ItemAddEditInput
 import base64
 Master=APIRouter()
 
@@ -45,8 +46,8 @@ async def GetBrandListing(input:Listinginput):
     return result.__dict__
 
 @Master.post('/AddEditBrand', dependencies=[Depends(jwtBearer())])
-async def AddEditBrand():
-    result= MasterService.AddEditBrand()
+async def AddEditBrand(input:Input.BrandAddEditInput):
+    result= MasterService.AddEditBrand(input)
     return result.__dict__
 
 @Master.post('/DeleteBrand', dependencies=[Depends(jwtBearer())])
@@ -75,8 +76,8 @@ async def GetStyleListing(input:Listinginput):
     return result.__dict__
 
 @Master.post('/AddEditStyle', dependencies=[Depends(jwtBearer())])
-async def AddEditStyle():
-    result= MasterService.AddEditStyle()
+async def AddEditStyle(input:Input.StyleAddEditInput):
+    result= MasterService.AddEditStyle(input)
     return result.__dict__
 
 @Master.post('/DeleteStyle', dependencies=[Depends(jwtBearer())])
@@ -90,8 +91,8 @@ async def GetItemGroupListing(input:Listinginput):
     return result.__dict__
 
 @Master.post('/AddEditItemGroup', dependencies=[Depends(jwtBearer())])
-async def AddEditItemGroup():
-    result= MasterService.AddEditItemGroup()
+async def AddEditItemGroup(input:Input.ItemGroupAddEditInput):
+    result= MasterService.AddEditItemGroup(input)
     return result.__dict__
 
 @Master.post('/DeleteItemGroup', dependencies=[Depends(jwtBearer())])
@@ -105,9 +106,9 @@ async def GetItemListing(input:Listinginput):
     return result.__dict__
 
 @Master.post('/AddEditItem', dependencies=[Depends(jwtBearer())])
-async def AddEditItem():
-    result= MasterService.AddEditItem()
-    return result.__dict__
+async def AddEditItem(input:Input.ItemAddEditInput):
+    result= MasterService.AddEditItem(input)
+    return result
 
 @Master.post('/DeleteItem', dependencies=[Depends(jwtBearer())])
 async def DeleteItem(input:DeleteInput):
@@ -143,3 +144,7 @@ async def AddEditColor():
 async def DeleteColor(input:DeleteInput):
     result= MasterService.commanDeleteService(input,"WE_mstColor_DeleteByID","DeleteColor")
     return result.__dict__
+
+@Master.post('/AddEditItemAddEditInput')
+async def DeleteColor(input:ItemAddEditInput):
+    return input

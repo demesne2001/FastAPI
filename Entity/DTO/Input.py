@@ -1,11 +1,12 @@
-from pydantic import BaseModel,Field
+from pydantic import BaseModel,Field, StrictInt
+from datetime import date
 class StockSales(BaseModel):
     FromDate:str
     ToDate:str
     TotalRow:str
     strCompanyID:str
-    strBranchID:str
-    strItemGroupID:str
+    strBranchID:str 
+    strItemGroupID:str  
     strItemID:str
     Unit:str
     PrintGroupBy :str
@@ -67,3 +68,78 @@ class SalesManHelpInput(BaseModel):
     search:str| None= Field(default='')
     PageNo:int
     Pagesize:int
+    
+class VoucherNoInput(BaseModel):
+    CompanyID:int | None= Field(default=1)
+    BranchID:int | None= Field(default=1)
+    CompanyUnitID:int | None= Field(default=1)
+    FinYearID:int | None= Field(default=7)
+    DaybookID:int| None= Field(default=401)
+    TranType:str| None= Field(default='A')
+    TableName:str| None= Field(default='trnSales')
+    VoucherDate:str| None= Field(default=str(date.today()))
+    VoucherNo:str| None= Field(default='')
+    
+class SalesAddEditInput(BaseModel):
+    pass
+
+class DepartmentAddEditInput(BaseModel):
+    DepartmentID:int
+    DepartmentName:str
+    IsActive:bool
+
+class ItemAddEditInput(BaseModel):
+    ItemID:int
+    DepartmentID:int
+    BrandID:int | None= Field(default=0)
+    ProductID:int
+    StyleID:int
+    ItemGroupID:int
+    ItemName:str
+    ShortName:str
+    BarcodeType:str
+    DefaultQty:float| None= Field(default=0)
+    IsActive:bool
+    TaxID:int| None= Field(default=0)
+    DiscPrc:float| None= Field(default=0)
+    SalesmanCommPrc:float| None= Field(default=0)
+    MarkUpPrc:float| None= Field(default=0)
+    MarkDownPrc:float| None= Field(default=0)
+    SalesMarkUpPrc:float| None= Field(default=0)
+    SalesMarkDownPrc:float| None= Field(default=0)
+    MesrUnitCode:str| None= Field(default='')
+    ItemType:str| None= Field(default='')
+    BarcodeShortcut:str
+    TranType:str| None= Field(default='A')
+    HSNCode:str | None= Field(default='')
+    LabourRate:float| None= Field(default=0)
+    MesrSalesRate:float | None= Field(default=0)
+    SubProcessIDs:str | None= Field(default='')
+    SalesmanCommType:str | None= Field(default='P')
+    SalesmanCommAmount:float| None= Field(default=0)
+    MRPROF:int| None= Field(default=0)
+    TaxSlabID:int| None= Field(default=0)
+    EyesMesrType:str| None= Field(default='')
+    DoNotShowInGarmentDealApp:bool
+    
+
+class ItemGroupAddEditInput(BaseModel):
+    ItemGroupID:int
+    ItemGroupName:str
+    ShortName:str
+    IsActive:bool
+
+class StyleAddEditInput(BaseModel):
+    StyleID:int
+    StyleName:str
+    ShortName:str
+    IsActive:bool
+
+class BrandAddEditInput(BaseModel):
+    BrandID:int
+    BrandName:str
+    ShortName:str
+    IsActive:bool
+
+class DesignAddEditInput(BaseModel):
+    pass
