@@ -159,3 +159,9 @@ async def GetItemByID(input:Input.GetByID):
 async def GetStyleByID(input:Input.GetByID):
     result=MasterService.CommanGetByID(input,"WE_mstStyle_GetByID")
     return result.__dict__
+
+
+@Master.post('/GetHSNCodeListing', dependencies=[Depends(jwtBearer())])
+async def GetHSNCodeListing(input:Listinginput):
+    result= MasterService.commanListingService(input,"WE_mstHSNCode_GetListing","GetHSNCodeListing")
+    return result.__dict__
