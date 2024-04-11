@@ -88,6 +88,9 @@ class DepartmentAddEditInput(BaseModel):
     DepartmentName:str
     IsActive:bool
 
+class GetByID(BaseModel):
+    ID:int
+
 class ItemAddEditInput(BaseModel):
     ItemID:int
     DepartmentID:int

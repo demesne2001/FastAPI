@@ -145,6 +145,17 @@ async def DeleteColor(input:DeleteInput):
     result= MasterService.commanDeleteService(input,"WE_mstColor_DeleteByID","DeleteColor")
     return result.__dict__
 
-@Master.post('/AddEditItemAddEditInput')
-async def DeleteColor(input:ItemAddEditInput):
-    return input
+@Master.post('/GetHSNByID')
+async def GetHSNByID(input:Input.GetByID):
+    result=MasterService.CommanGetByID(input,"WE_mstHSNTax_GetByID")
+    return result.__dict__
+
+@Master.post('/GetItemByID')
+async def GetItemByID(input:Input.GetByID):
+    result=MasterService.GetItemByID(input)
+    return result.__dict__
+
+@Master.post('/GetStyleByID')
+async def GetStyleByID(input:Input.GetByID):
+    result=MasterService.CommanGetByID(input,"WE_mstStyle_GetByID")
+    return result.__dict__

@@ -30,3 +30,9 @@ class CommonDeleteResult(CommanResult.CommanResult):
 class CommanAddEditResult(CommanResult.CommanResult):
     def __init__(self):
         super().__init__()
+        
+class ItemGetByIDResult(CommanResult.CommanResult):
+    def __init__(self):
+        super().__init__()
+        self.lstResult=[]
+        self.lstHsnCode=[]

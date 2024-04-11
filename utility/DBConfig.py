@@ -160,7 +160,7 @@ def ExcuteNonQuery(param,spname,MethodNname,Result):
            key_value_pairs=[]          
            Exparam=F"@FK_Name='{constrain[1]}',@FieldValue={ID[1]},@FieldName='{coloumn[0]}'"
         
-           cursor2.execute(f"ExeC util_GetForeignReferenceUsingFK {Exparam}")
+           cursor2.execute(f"Exec util_GetForeignReferenceUsingFK {Exparam}")
            columns = [column[0] for column in cursor2.description]
            rows = cursor2.fetchall()
            while (cursor2.nextset()):
@@ -215,8 +215,6 @@ def ExecuteAddEdit(input,spname,MethodNname):
         print(rows)
         ID=rows[0]        
         cursor.commit()
-         
-               
     except Exception as e:
         print(MethodNname + 'Error :- ',e)
         print('SQL Query',f"EXEC {spname} {param}")

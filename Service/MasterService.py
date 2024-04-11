@@ -1,6 +1,8 @@
 from utility import DBConfig
 from Entity.DTO.Input import Listinginput,DeleteInput
 from Entity.DTO import Input
+from Entity import Result
+import pyodbc
 from Entity.Result import CommonListingResult,CommonDeleteResult,CommanAddEditResult
 
 def commanListingService(input:Listinginput,SpName:str,MethodName:str):
@@ -122,4 +124,40 @@ def AddEditItemGroup(input:Input.ItemGroupAddEditInput):
     elif(ID ==-2):
        result.Message.append("ItemGroup ShortName AlReady Exists") 
        result.HasError=True
+    return result
+
+def GetItemByID(input:Input.GetByID):
+    result=Result.ItemGetByIDResult()
+    if(input.ID<=0):
+        result.Message.append("ItemID Required")
+    if(len(result.Message)==0):
+        
+        Connection=pyodbc.connect(DBConfig.connection)
+        cursor = Connection.cursor()
+        try:
+            cursor.execute(f"EXEC WE_mstItem_GetByID @ID={input.ID}")
+            columns = [column[0] for column in cursor.description]
+            rows = cursor.fetchall() 
+            for row in rows:
+                result.lstResult.append(dict(zip(columns, row)))
+            while (cursor.nextset()):
+                Nexttable=cursor.fetchall()
+                count=0      
+                columns2 = [column[0] for column in cursor.description]            
+                for Item in Nexttable: 
+                    result.lstHsnCode.append(dict(zip(columns2, Item)))  
+            
+        except Exception as e:
+            result.Message.append(e)
+            result.HasError=True
+        finally:
+            cursor.close()
+            Connection.close()
+    else:
+        result.HasError=True
+    return result
+
+def CommanGetByID(input:Input.GetByID,SPName:str):
+    result=Result.CommonListingResult()
+    result.lstResult=DBConfig.ExecuteDataReader(F"@ID={input.ID}",SPName,"CommanGetByID")
     return result
