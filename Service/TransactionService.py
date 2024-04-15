@@ -1,5 +1,6 @@
 from utility import DBConfig
 from Entity.DTO.Input import SalesListingInput,DeleteInput,BarcodeHelpInput,SalesManHelpInput,VoucherNoInput
+from Entity.DTO import Input
 from Entity.Result import CommonListingResult,CommonDeleteResult
 
 def trnSaleslisting(input:SalesListingInput):
@@ -132,3 +133,14 @@ def GetVoucherNo(input:VoucherNoInput):
     else:
         Result.HasError=True
     return Result  
+
+def GetCustomerDetailByMobileNo(input:Input.CustomerSearch):
+    result=CommonListingResult()
+    try:
+        param=''
+        param=DBConfig.spParam(input)
+        result=DBConfig.ExecuteDataReaderWithResult(param,"","GetCustomerDetailByMobileNo",result)
+    except Exception as e:
+        result.HasError=True
+        result.Message.append(str(e))
+    return result

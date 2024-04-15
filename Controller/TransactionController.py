@@ -5,6 +5,7 @@ from Entity.DTO.Input import UploadFile
 from Controller.servicebearercontroller import jwtBearer
 from pathlib import Path
 from Entity.DTO.Input import SalesListingInput,BarcodeHelpInput,SalesManHelpInput,VoucherNoInput
+from Entity.DTO import Input
 import base64
 Transaction=APIRouter()
 
@@ -26,5 +27,10 @@ async def GetSalesmanHelp(input:SalesManHelpInput):
 
 @Transaction.post('/GetVoucherNo', dependencies=[Depends(jwtBearer())])
 async def GetVoucherNo(input:VoucherNoInput):
+    result= TransactionService.GetVoucherNo(input)
+    return result.__dict__
+
+@Transaction.post('/GetCustomerDetailByMobileNo', dependencies=[Depends(jwtBearer())])
+async def GetCustomerDetailByMobileNo(input:Input.CustomerSearch):
     result= TransactionService.GetVoucherNo(input)
     return result.__dict__

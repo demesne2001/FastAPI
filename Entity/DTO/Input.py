@@ -83,6 +83,9 @@ class VoucherNoInput(BaseModel):
 class SalesAddEditInput(BaseModel):
     pass
 
+class CustomerSearch(BaseModel):
+    Mobile1:str
+
 class DepartmentAddEditInput(BaseModel):
     DepartmentID:int
     DepartmentName:str
@@ -145,4 +148,10 @@ class BrandAddEditInput(BaseModel):
     IsActive:bool
 
 class DesignAddEditInput(BaseModel):
+    pass
+
+class salesAddEdit(BaseModel):
+    pass
+
+class SalesItem(BaseModel):
     pass
