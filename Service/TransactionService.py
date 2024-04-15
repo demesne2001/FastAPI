@@ -139,7 +139,7 @@ def GetCustomerDetailByMobileNo(input:Input.CustomerSearch):
     try:
         param=''
         param=DBConfig.spParam(input)
-        result=DBConfig.ExecuteDataReaderWithResult(param,"","GetCustomerDetailByMobileNo",result)
+        result=DBConfig.ExecuteDataReaderWithResult(param,"WE_mstAccount_GetForAccountUC","GetCustomerDetailByMobileNo",result)
     except Exception as e:
         result.HasError=True
         result.Message.append(str(e))

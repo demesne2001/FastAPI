@@ -32,5 +32,5 @@ async def GetVoucherNo(input:VoucherNoInput):
 
 @Transaction.post('/GetCustomerDetailByMobileNo', dependencies=[Depends(jwtBearer())])
 async def GetCustomerDetailByMobileNo(input:Input.CustomerSearch):
-    result= TransactionService.GetVoucherNo(input)
+    result= TransactionService.GetCustomerDetailByMobileNo(input)
     return result.__dict__
