@@ -97,7 +97,7 @@ class ItemAddEditInput(BaseModel):
     BrandID:int | None= Field(default=0)
     ProductID:int
     StyleID:int
-    ItemGroupID:int
+    ItemGroupID:int | None= Field(default=0)
     ItemName:str
     ShortName:str
     BarcodeType:str
@@ -112,7 +112,7 @@ class ItemAddEditInput(BaseModel):
     SalesMarkDownPrc:float| None= Field(default=0)
     MesrUnitCode:str| None= Field(default='')
     ItemType:str| None= Field(default='')
-    BarcodeShortcut:str
+    BarcodeShortcut:str | None= Field(default='')
     TranType:str| None= Field(default='A')
     HSNCode:str | None= Field(default='')
     LabourRate:float| None= Field(default=0)

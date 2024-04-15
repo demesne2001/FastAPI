@@ -69,15 +69,11 @@ def AddEditBrand(input:Input.BrandAddEditInput):
 
 
 def AddEditItem(input:Input.ItemAddEditInput):
-    result=CommanAddEditResult()
-    if(input.BarcodeShortcut == ""):
-        result.Message.append("BarcodeShortcut Req")
-    elif(input.BarcodeType == ""):
+    result=CommanAddEditResult()   
+    if(input.BarcodeType == ""):
         result.Message.append("BarcodeType Req")
     elif(input.ItemName == ""):
-        result.Message.append("ItemName Req")
-    elif(input.ItemGroupID <= 0):
-        result.Message.append("ItemGroupID Req")
+        result.Message.append("ItemName Req")    
     elif(input.DepartmentID <= 0):
         result.Message.append("DepartmentID Req")
     if(len(result.Message)==0):        

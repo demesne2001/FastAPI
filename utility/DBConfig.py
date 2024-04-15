@@ -20,11 +20,11 @@ database1='GRetail_Extreme'
 username1='Garment'
 password1='Garment'
 
-connection = (
-    f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')
-
 # connection = (
-#     f'DRIVER=SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password}')
+#     f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')
+
+connection = (
+    f'DRIVER=SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password}')
 
 jconnection = (
     f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={serverj};DATABASE={databasej};UID={usernamej};PWD={passwordj};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')

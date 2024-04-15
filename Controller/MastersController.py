@@ -165,3 +165,5 @@ async def GetStyleByID(input:Input.GetByID):
 async def GetHSNCodeListing(input:Listinginput):
     result= MasterService.commanListingService(input,"WE_mstHSNCode_GetListing","GetHSNCodeListing")
     return result.__dict__
+
+
