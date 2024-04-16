@@ -27,7 +27,7 @@ connection = (
     f'DRIVER=SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password}')
 
 jconnection = (
-    f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={serverj};DATABASE={databasej};UID={usernamej};PWD={passwordj};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')
+    f'DRIVER=ODBC Driver 18 for SQL Server;SERVER={WRserver};DATABASE={WRatabase};UID={WRsername};PWD={WRassword};TrustServerCertificate=yes;Encrypt=no;Connection Timeout=30;')
 
 # connection = (
 #     f'DRIVER=ODBC Driver 17 for SQL Server;SERVER={server1};DATABASE={database1};UID={username1};PWD={password1};')

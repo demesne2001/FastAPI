@@ -153,5 +153,5 @@ class DesignAddEditInput(BaseModel):
 class salesAddEdit(BaseModel):
     pass
 
-class SalesItem(BaseModel):
+class SalesItemAddEdit(BaseModel):
     pass
