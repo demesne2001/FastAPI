@@ -39,7 +39,7 @@ def BIrpt_StockAgainSales_GetRPT(input:StockSales):
         connection.close()
     except Exception as e:
         connection.close()
-        print(e)
+        print(str(e))
         
     print(key_value_pairs)
     return key_value_pairs
